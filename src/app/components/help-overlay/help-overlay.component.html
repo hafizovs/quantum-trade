@@ -1,0 +1,45 @@
+@if (helpOpen()) {
+  <div
+    class="help-backdrop"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="t('help.title')"
+    (click)="onBackdropClick($event)"
+  >
+    <article class="help-modal">
+      <header class="help-modal__header">
+        <h2>{{ t('help.title') }}</h2>
+        <button type="button" class="close-btn" (click)="close()">{{ t('help.close') }}</button>
+      </header>
+
+      <p class="help-modal__intro">{{ t('help.intro') }}</p>
+
+      <section>
+        <h3>{{ t('help.hotkeys') }}</h3>
+        <ul class="hotkeys">
+          @for (item of hotkeys; track item.keys) {
+            <li>
+              <kbd>{{ item.keys }}</kbd>
+              <span>{{ item.action }}</span>
+            </li>
+          }
+        </ul>
+      </section>
+
+      <section>
+        <h3>GBM</h3>
+        <p>{{ t('help.gbm') }}</p>
+      </section>
+
+      <section>
+        <h3>{{ t('trade.leverage') }}</h3>
+        <p>{{ t('help.leverage') }}</p>
+      </section>
+
+      <section>
+        <h3>Chart</h3>
+        <p>{{ t('help.chart') }}</p>
+      </section>
+    </article>
+  </div>
+}

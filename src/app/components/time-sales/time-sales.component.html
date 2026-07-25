@@ -1,0 +1,36 @@
+<section class="tape">
+  <header class="tape__header">
+    <h2 class="tape__title">{{ t('tape.title') }}</h2>
+  </header>
+
+  @if (tape().length === 0) {
+    <p class="tape__empty">{{ t('tape.empty') }}</p>
+  } @else {
+    <div class="tape__table-wrap">
+      <table class="tape__table">
+        <thead>
+          <tr>
+            <th scope="col">{{ t('positions.col.time') }}</th>
+            <th scope="col">{{ t('orderBook.price') }}</th>
+            <th scope="col">{{ t('orderBook.size') }}</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of tape(); track row.id) {
+            <tr [class.row--user]="row.isUser" [class.row--buy]="row.side === 'buy'" [class.row--sell]="row.side === 'sell'">
+              <td>{{ fmtTime(row.time) }}</td>
+              <td>{{ fmtPrice(row.assetId, row.price) }}</td>
+              <td>{{ fmtQty(row.assetId, row.qty) }}</td>
+              <td>
+                @if (row.isUser) {
+                  <span class="you-badge">{{ t('tape.you') }}</span>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</section>

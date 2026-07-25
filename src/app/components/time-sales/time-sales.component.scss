@@ -1,0 +1,81 @@
+:host {
+  display: block;
+  height: 100%;
+  min-height: 0;
+}
+
+.tape {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  padding: 10px;
+}
+
+.tape__header {
+  margin-bottom: 8px;
+}
+
+.tape__title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--qt-text, rgba(255, 255, 255, 0.88));
+}
+
+.tape__empty {
+  margin: 0;
+  font-size: 12px;
+  color: var(--qt-text-muted, rgba(255, 255, 255, 0.45));
+}
+
+.tape__table-wrap {
+  overflow: auto;
+  min-height: 0;
+}
+
+.tape__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+}
+
+.tape__table th {
+  position: sticky;
+  top: 0;
+  padding: 4px 6px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--qt-text-muted, rgba(255, 255, 255, 0.45));
+  background: var(--qt-panel-bg, #11161d);
+}
+
+.tape__table td {
+  padding: 3px 6px;
+  color: var(--qt-text, rgba(255, 255, 255, 0.78));
+}
+
+.row--buy td:nth-child(2) {
+  color: var(--qt-bull, #00c853);
+}
+
+.row--sell td:nth-child(2) {
+  color: var(--qt-bear, #ff3b5c);
+}
+
+.row--user {
+  background: var(--qt-accent-dim, rgba(0, 200, 83, 0.08));
+}
+
+.you-badge {
+  display: inline-flex;
+  padding: 1px 5px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--qt-accent, #00c853);
+  background: rgba(0, 200, 83, 0.15);
+}

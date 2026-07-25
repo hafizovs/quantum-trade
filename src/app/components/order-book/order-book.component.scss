@@ -1,0 +1,133 @@
+:host {
+  display: block;
+  min-height: 0;
+}
+
+.order-book {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  padding: 10px;
+  background: var(--qt-panel-bg, #11161d);
+  border: 1px solid var(--qt-border, rgba(255, 255, 255, 0.08));
+  border-radius: var(--qt-radius-sm, 4px);
+  transition: background-color 120ms ease;
+}
+
+.order-book--flash {
+  background: var(--qt-flash-bg, rgba(255, 255, 255, 0.04));
+}
+
+.order-book__header {
+  margin-bottom: 8px;
+}
+
+.order-book__title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--qt-text, rgba(255, 255, 255, 0.88));
+}
+
+.order-book__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0 8px 4px;
+  font-size: 10px;
+  color: var(--qt-text-muted, rgba(255, 255, 255, 0.45));
+  text-transform: uppercase;
+}
+
+.order-book__asks,
+.order-book__bids {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow: auto;
+  min-height: 0;
+}
+
+.order-book__asks {
+  flex: 1 1 45%;
+}
+
+.order-book__bids {
+  flex: 1 1 45%;
+}
+
+.order-book__spread {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 8px;
+  margin: 4px 0;
+  font-size: 10px;
+  color: var(--qt-text-muted, rgba(255, 255, 255, 0.55));
+  background: var(--qt-surface, rgba(255, 255, 255, 0.03));
+  border-radius: var(--qt-radius-xs, 3px);
+}
+
+.order-book__spread-value,
+.order-book__mid {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+  padding: 3px 8px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.row__depth {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.row__depth--ask {
+  right: 0;
+  background: var(--qt-bear, #ff3b5c);
+}
+
+.row__depth--bid {
+  right: 0;
+  background: var(--qt-bull, #00c853);
+}
+
+.row__price,
+.row__size {
+  position: relative;
+  z-index: 1;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+}
+
+.row--ask .row__price {
+  color: var(--qt-bear, #ff3b5c);
+}
+
+.row--bid .row__price {
+  color: var(--qt-bull, #00c853);
+}
+
+.row__size {
+  text-align: right;
+  color: var(--qt-text, rgba(255, 255, 255, 0.78));
+}
+
+.row:hover {
+  background: var(--qt-hover, rgba(255, 255, 255, 0.04));
+}

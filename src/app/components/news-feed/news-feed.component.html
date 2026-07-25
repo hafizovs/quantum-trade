@@ -1,0 +1,23 @@
+<section class="news-feed">
+  <header class="news-feed__header">
+    <h2 class="news-feed__title">{{ t('news.title') }}</h2>
+  </header>
+
+  @if (news().length === 0) {
+    <p class="news-feed__empty">{{ t('news.empty') }}</p>
+  } @else {
+    <ul class="news-feed__list">
+      @for (item of news(); track item.id) {
+        <li class="news-item">
+          <div class="news-item__meta">
+            <span class="badge" [class]="'badge--' + item.sentiment">
+              {{ sentimentLabel(item.sentiment) }}
+            </span>
+            <time class="news-item__time">{{ fmtTime(item.time) }}</time>
+          </div>
+          <p class="news-item__headline">{{ headline(item) }}</p>
+        </li>
+      }
+    </ul>
+  }
+</section>

@@ -1,0 +1,52 @@
+<header class="toolbar">
+  <div class="toolbar__brand">
+    <span class="toolbar__logo" aria-hidden="true">◈</span>
+    <div>
+      <h1 class="toolbar__title">{{ t('app.title') }}</h1>
+      <p class="toolbar__subtitle">{{ t('app.subtitle') }}</p>
+    </div>
+  </div>
+
+  <nav class="toolbar__assets" [attr.aria-label]="t('app.title')">
+    @for (asset of assets(); track asset.id) {
+      <button
+        type="button"
+        class="asset-tab"
+        [class.asset-tab--active]="selectedAssetId() === asset.id"
+        (click)="selectAsset(asset.id)"
+      >
+        {{ assetLabel(asset.id) }}
+      </button>
+    }
+  </nav>
+
+  <div class="toolbar__intervals" role="group" [attr.aria-label]="t('toolbar.interval.5s')">
+    <button
+      type="button"
+      class="pill"
+      [class.pill--active]="candleIntervalSec() === 5"
+      (click)="setInterval(5)"
+    >
+      {{ t('toolbar.interval.5s') }}
+    </button>
+    <button
+      type="button"
+      class="pill"
+      [class.pill--active]="candleIntervalSec() === 15"
+      (click)="setInterval(15)"
+    >
+      {{ t('toolbar.interval.15s') }}
+    </button>
+  </div>
+
+  <div class="toolbar__actions">
+    <button type="button" class="ghost-btn" (click)="reset()">{{ t('toolbar.reset') }}</button>
+    <button type="button" class="ghost-btn" (click)="toggleTheme()">
+      {{ t('toolbar.theme') }} · {{ themeLabel() }}
+    </button>
+    <button type="button" class="ghost-btn" (click)="toggleLocale()">
+      {{ t('toolbar.lang') }} · {{ localeLabel() }}
+    </button>
+    <button type="button" class="ghost-btn" (click)="openHelp()">{{ t('toolbar.help') }}</button>
+  </div>
+</header>

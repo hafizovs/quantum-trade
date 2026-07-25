@@ -1,0 +1,161 @@
+<section class="positions-panel">
+  <div class="positions-panel__tabs" role="tablist">
+    <button
+      type="button"
+      role="tab"
+      class="tab"
+      [class.tab--active]="positionsTab() === 'positions'"
+      [attr.aria-selected]="positionsTab() === 'positions'"
+      (click)="setTab('positions')"
+    >
+      {{ t('positions.tabs.positions') }}
+    </button>
+    <button
+      type="button"
+      role="tab"
+      class="tab"
+      [class.tab--active]="positionsTab() === 'orders'"
+      [attr.aria-selected]="positionsTab() === 'orders'"
+      (click)="setTab('orders')"
+    >
+      {{ t('positions.tabs.orders') }}
+    </button>
+    <button
+      type="button"
+      role="tab"
+      class="tab"
+      [class.tab--active]="positionsTab() === 'history'"
+      [attr.aria-selected]="positionsTab() === 'history'"
+      (click)="setTab('history')"
+    >
+      {{ t('positions.tabs.history') }}
+    </button>
+  </div>
+
+  <div class="positions-panel__body">
+    @if (positionsTab() === 'positions') {
+      @if (positions().length === 0) {
+        <p class="empty">{{ t('positions.empty') }}</p>
+      } @else {
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>{{ t('positions.col.asset') }}</th>
+                <th>{{ t('positions.col.side') }}</th>
+                <th>{{ t('positions.col.qty') }}</th>
+                <th>{{ t('positions.col.entry') }}</th>
+                <th>{{ t('positions.col.mark') }}</th>
+                <th>{{ t('positions.col.leverage') }}</th>
+                <th>{{ t('positions.col.margin') }}</th>
+                <th>{{ t('positions.col.liq') }}</th>
+                <th>{{ t('positions.col.upnl') }}</th>
+                <th>{{ t('positions.col.actions') }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (pos of positions(); track pos.id) {
+                <tr>
+                  <td>{{ assetSymbol(pos.assetId) }}</td>
+                  <td [class.side-long]="pos.side === 'long'" [class.side-short]="pos.side === 'short'">
+                    {{ sideLabel(pos.side) }}
+                  </td>
+                  <td>{{ fmtQty(pos.assetId, pos.qty) }}</td>
+                  <td>{{ fmtPrice(pos.assetId, pos.entryPrice) }}</td>
+                  <td>{{ fmtPrice(pos.assetId, markPrice(pos.assetId)) }}</td>
+                  <td>{{ pos.leverage }}×</td>
+                  <td>{{ fmtUsd(pos.marginUsd) }}</td>
+                  <td>{{ fmtPrice(pos.assetId, pos.liquidationPrice) }}</td>
+                  <td [class.positive]="pos.unrealizedPnl > 0" [class.negative]="pos.unrealizedPnl < 0">
+                    {{ fmtSignedUsd(pos.unrealizedPnl) }}
+                  </td>
+                  <td>
+                    <button type="button" class="mini-btn" (click)="closePosition(pos.id)">
+                      {{ t('positions.close') }}
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    }
+
+    @if (positionsTab() === 'orders') {
+      @if (openOrders().length === 0) {
+        <p class="empty">{{ t('orders.empty') }}</p>
+      } @else {
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>{{ t('positions.col.asset') }}</th>
+                <th>{{ t('positions.col.side') }}</th>
+                <th>{{ t('positions.col.type') }}</th>
+                <th>{{ t('positions.col.qty') }}</th>
+                <th>{{ t('positions.col.limit') }}</th>
+                <th>{{ t('positions.col.leverage') }}</th>
+                <th>{{ t('positions.col.status') }}</th>
+                <th>{{ t('positions.col.created') }}</th>
+                <th>{{ t('positions.col.actions') }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (order of openOrders(); track order.id) {
+                <tr>
+                  <td>{{ assetSymbol(order.assetId) }}</td>
+                  <td>{{ sideLabel(order.positionSide) }}</td>
+                  <td>{{ order.type }}</td>
+                  <td>{{ fmtQty(order.assetId, order.qty) }}</td>
+                  <td>{{ order.limitPrice !== null ? fmtPrice(order.assetId, order.limitPrice) : '—' }}</td>
+                  <td>{{ order.leverage }}×</td>
+                  <td>{{ order.status }}</td>
+                  <td>{{ fmtTime(order.createdAt) }}</td>
+                  <td>
+                    <button type="button" class="mini-btn" (click)="cancelOrder(order.id)">
+                      {{ t('positions.cancel') }}
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    }
+
+    @if (positionsTab() === 'history') {
+      @if (history().length === 0) {
+        <p class="empty">{{ t('history.empty') }}</p>
+      } @else {
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>{{ t('positions.col.time') }}</th>
+                <th>{{ t('positions.col.kind') }}</th>
+                <th>{{ t('positions.col.delta') }}</th>
+                <th>{{ t('positions.col.balance') }}</th>
+                <th>{{ t('positions.col.note') }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (entry of history(); track entry.id) {
+                <tr>
+                  <td>{{ fmtTime(entry.time) }}</td>
+                  <td>{{ entry.kind }}</td>
+                  <td [class.positive]="entry.deltaUsd > 0" [class.negative]="entry.deltaUsd < 0">
+                    {{ fmtSignedUsd(entry.deltaUsd) }}
+                  </td>
+                  <td>{{ fmtUsd(entry.balanceAfter) }}</td>
+                  <td>{{ note(entry) }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    }
+  </div>
+</section>

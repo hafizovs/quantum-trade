@@ -1,0 +1,98 @@
+<section class="trade-panel">
+  <header class="trade-panel__header">
+    <h2 class="trade-panel__title">{{ t('trade.title') }}</h2>
+    <div class="trade-panel__types" role="group" [attr.aria-label]="t('trade.title')">
+      <button
+        type="button"
+        class="type-btn"
+        [class.type-btn--active]="orderType() === 'market'"
+        (click)="setOrderType('market')"
+      >
+        {{ t('trade.orderType.market') }}
+      </button>
+      <button
+        type="button"
+        class="type-btn"
+        [class.type-btn--active]="orderType() === 'limit'"
+        (click)="setOrderType('limit')"
+      >
+        {{ t('trade.orderType.limit') }}
+      </button>
+    </div>
+  </header>
+
+  <label class="field">
+    <span class="field__label">{{ t('trade.notional') }}</span>
+    <input
+      class="field__input"
+      type="number"
+      [min]="minNotional"
+      step="10"
+      [value]="notionalUsd()"
+      (input)="onNotionalInput($event)"
+    />
+  </label>
+
+  @if (orderType() === 'limit') {
+    <label class="field">
+      <span class="field__label">{{ t('trade.limitPrice') }}</span>
+      <input
+        class="field__input"
+        type="number"
+        step="any"
+        [value]="limitPrice() ?? ''"
+        (input)="onLimitInput($event)"
+      />
+    </label>
+  } @else {
+    <div class="field field--readonly">
+      <span class="field__label">{{ t('trade.lastPrice') }}</span>
+      <span class="field__value">{{ fmtPrice(selectedPrice()) }}</span>
+    </div>
+  }
+
+  <label class="field">
+    <span class="field__label">{{ t('trade.leverage') }} · {{ leverage() }}×</span>
+    <input
+      class="field__range"
+      type="range"
+      [min]="minLeverage"
+      [max]="maxLeverage"
+      step="1"
+      [value]="leverage()"
+      (input)="onLeverageInput($event)"
+    />
+  </label>
+
+  <dl class="preview">
+    <div class="preview__row">
+      <dt>{{ t('trade.qty') }}</dt>
+      <dd>{{ fmtQty(preview().qty) }}</dd>
+    </div>
+    <div class="preview__row">
+      <dt>{{ t('trade.margin') }}</dt>
+      <dd>{{ fmtUsd(preview().margin) }}</dd>
+    </div>
+    <div class="preview__row">
+      <dt>{{ t('trade.liqLong') }}</dt>
+      <dd>{{ fmtPrice(preview().liqLong) }}</dd>
+    </div>
+    <div class="preview__row">
+      <dt>{{ t('trade.liqShort') }}</dt>
+      <dd>{{ fmtPrice(preview().liqShort) }}</dd>
+    </div>
+  </dl>
+
+  @if (lastTradeError()) {
+    <p class="trade-panel__error" role="alert">{{ t(lastTradeError()!) }}</p>
+  }
+
+  <div class="trade-panel__actions">
+    <button type="button" class="btn btn--long" (click)="buyLong()">
+      {{ t('trade.buyLong') }}
+    </button>
+    <button type="button" class="btn btn--short" (click)="sellShort()">
+      {{ t('trade.sellShort') }}
+    </button>
+  </div>
+</section>

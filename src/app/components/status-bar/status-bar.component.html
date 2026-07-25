@@ -1,0 +1,32 @@
+<footer class="status-bar">
+  <div class="status-bar__item">
+    <span class="label">{{ t('status.netWorth') }}</span>
+    <span class="value">{{ fmtUsd(netWorth()) }}</span>
+  </div>
+  <div class="status-bar__item">
+    <span class="label">{{ t('status.cash') }}</span>
+    <span class="value">{{ fmtUsd(cashUsd()) }}</span>
+  </div>
+  <div class="status-bar__item">
+    <span class="label">{{ t('status.last') }}</span>
+    <span class="value">{{ fmtPrice(selectedPrice()) }}</span>
+  </div>
+  <div class="status-bar__item">
+    <span class="label">{{ t('status.upnl') }}</span>
+    <span
+      class="value"
+      [class.positive]="totalUnrealizedPnl() > 0"
+      [class.negative]="totalUnrealizedPnl() < 0"
+    >
+      {{ fmtSignedUsd(totalUnrealizedPnl()) }}
+    </span>
+  </div>
+  <div class="status-bar__item">
+    <span class="label">{{ t('status.positions') }}</span>
+    <span class="value">{{ positions().length }}</span>
+  </div>
+  <div class="status-bar__live">
+    <span class="live-dot" [class.live-dot--on]="simRunning()"></span>
+    <span>{{ t('status.live') }}</span>
+  </div>
+</footer>

@@ -1,0 +1,20 @@
+<div class="toast-stack" aria-live="polite" aria-relevant="additions">
+  @for (item of queue(); track item.id) {
+    <div
+      class="toast"
+      [class]="'toast--' + item.kind"
+      role="status"
+      [attr.aria-live]="liveMode(item)"
+    >
+      <p class="toast__message">{{ t(item) }}</p>
+      <button
+        type="button"
+        class="toast__dismiss"
+        [attr.aria-label]="closeLabel()"
+        (click)="dismiss(item.id)"
+      >
+        ×
+      </button>
+    </div>
+  }
+</div>

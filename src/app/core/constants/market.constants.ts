@@ -1,0 +1,13 @@
+export const TICK_INTERVAL_MS = 1000;
+export const TICK_DT_SEC = 1;
+export const MAX_CATCH_UP_TICKS = 3;
+export const MIN_PRICE = 0.0001;
+export const MIN_VOLATILITY = 0.00005;
+export const MAX_VOLATILITY = 0.05;
+export const DEFAULT_RNG_SEED = 42;
+export const MAX_TICK_HISTORY = 2000;
+export const MAX_CANDLES = 500;
+export const MAX_NEWS = 40;
+export const MAX_TAPE = 200;
+export const MAX_TAPE_VIEW = 80;
+export const MAX_LEDGER = 200;

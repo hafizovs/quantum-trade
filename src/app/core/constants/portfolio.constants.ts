@@ -1,0 +1,9 @@
+export const INITIAL_CASH_USD = 100000;
+export const MIN_LEVERAGE = 1;
+export const MAX_LEVERAGE = 20;
+export const DEFAULT_LEVERAGE = 5;
+export const MIN_NOTIONAL_USD = 50;
+export const DEFAULT_NOTIONAL_USD = 1000;
+export const MAINTENANCE_MARGIN_RATE = 0.005;
+export const TAKER_FEE_BPS = 0;
+export const MAKER_FEE_BPS = 0;

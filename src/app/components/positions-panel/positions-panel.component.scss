@@ -1,0 +1,111 @@
+:host {
+  display: block;
+}
+
+.positions-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--qt-panel-bg, #11161d);
+  border: 1px solid var(--qt-border, rgba(255, 255, 255, 0.08));
+  border-radius: var(--qt-radius-sm, 4px);
+  overflow: hidden;
+}
+
+.positions-panel__tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 10px 0;
+  border-bottom: 1px solid var(--qt-border, rgba(255, 255, 255, 0.08));
+}
+
+.tab {
+  padding: 8px 12px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--qt-text-muted, rgba(255, 255, 255, 0.55));
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab--active {
+  color: var(--qt-text, rgba(255, 255, 255, 0.9));
+  border-bottom-color: var(--qt-accent, #00c853);
+}
+
+.positions-panel__body {
+  flex: 1;
+  min-height: 0;
+  padding: 8px 10px 10px;
+}
+
+.empty {
+  margin: 0;
+  padding: 16px 8px;
+  font-size: 12px;
+  color: var(--qt-text-muted, rgba(255, 255, 255, 0.45));
+}
+
+.table-wrap {
+  overflow: auto;
+  max-height: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  padding: 6px 8px;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 10px;
+  color: var(--qt-text-muted, rgba(255, 255, 255, 0.45));
+  background: var(--qt-panel-bg, #11161d);
+}
+
+td {
+  padding: 6px 8px;
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--qt-text, rgba(255, 255, 255, 0.82));
+  border-top: 1px solid var(--qt-border, rgba(255, 255, 255, 0.05));
+}
+
+.side-long {
+  color: var(--qt-bull, #00c853);
+}
+
+.side-short {
+  color: var(--qt-bear, #ff3b5c);
+}
+
+.positive {
+  color: var(--qt-bull, #00c853);
+}
+
+.negative {
+  color: var(--qt-bear, #ff3b5c);
+}
+
+.mini-btn {
+  padding: 4px 8px;
+  border: 1px solid var(--qt-border, rgba(255, 255, 255, 0.12));
+  border-radius: var(--qt-radius-xs, 3px);
+  background: transparent;
+  color: var(--qt-text-muted, rgba(255, 255, 255, 0.7));
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.mini-btn:hover {
+  color: var(--qt-text, rgba(255, 255, 255, 0.9));
+  background: var(--qt-hover, rgba(255, 255, 255, 0.04));
+}

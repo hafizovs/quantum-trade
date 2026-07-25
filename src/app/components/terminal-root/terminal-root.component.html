@@ -1,0 +1,55 @@
+<div
+  class="terminal"
+  [style.--qt-trade-width.px]="tradePanelWidth"
+  [style.--qt-right-width.px]="rightColumnWidth"
+  [style.--qt-positions-height.px]="positionsPanelHeight"
+>
+  <qt-toolbar class="terminal__toolbar" />
+
+  <qt-trade-panel class="terminal__trade" />
+
+  <qt-trading-chart class="terminal__chart" />
+
+  <aside class="terminal__right">
+    <qt-order-book class="terminal__order-book" />
+
+    <div class="terminal__pane">
+      <div class="terminal__pane-tabs" role="tablist">
+        <button
+          type="button"
+          role="tab"
+          class="pane-tab"
+          [class.pane-tab--active]="rightPaneTab() === 'news'"
+          [attr.aria-selected]="rightPaneTab() === 'news'"
+          (click)="setRightPaneTab('news')"
+        >
+          {{ t('right.news') }}
+        </button>
+        <button
+          type="button"
+          role="tab"
+          class="pane-tab"
+          [class.pane-tab--active]="rightPaneTab() === 'tape'"
+          [attr.aria-selected]="rightPaneTab() === 'tape'"
+          (click)="setRightPaneTab('tape')"
+        >
+          {{ t('right.tape') }}
+        </button>
+      </div>
+
+      <div class="terminal__pane-body">
+        @if (rightPaneTab() === 'news') {
+          <qt-news-feed />
+        } @else {
+          <qt-time-sales />
+        }
+      </div>
+    </div>
+  </aside>
+
+  <qt-positions-panel class="terminal__positions" />
+  <qt-status-bar class="terminal__status" />
+</div>
+
+<qt-help-overlay />
+<qt-toast />

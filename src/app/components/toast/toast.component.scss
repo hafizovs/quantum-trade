@@ -1,0 +1,59 @@
+:host {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 1100;
+  pointer-events: none;
+}
+
+.toast-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(320px, calc(100vw - 24px));
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--qt-radius-sm, 4px);
+  border: 1px solid var(--qt-border, rgba(255, 255, 255, 0.12));
+  background: var(--qt-panel-bg, #11161d);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  pointer-events: auto;
+}
+
+.toast__message {
+  margin: 0;
+  flex: 1;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--qt-text, rgba(255, 255, 255, 0.9));
+}
+
+.toast__dismiss {
+  border: none;
+  background: transparent;
+  color: var(--qt-text-muted, rgba(255, 255, 255, 0.55));
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.toast--info {
+  border-left: 3px solid var(--qt-info, #42a5f5);
+}
+
+.toast--success {
+  border-left: 3px solid var(--qt-bull, #00c853);
+}
+
+.toast--warning {
+  border-left: 3px solid var(--qt-warning, #ffb300);
+}
+
+.toast--danger {
+  border-left: 3px solid var(--qt-bear, #ff3b5c);
+}

@@ -1,0 +1,52 @@
+<section class="order-book" [class.order-book--flash]="flashing()">
+  <header class="order-book__header">
+    <h2 class="order-book__title">{{ t('orderBook.title') }}</h2>
+  </header>
+
+  <div class="order-book__columns">
+    <span>{{ t('orderBook.price') }}</span>
+    <span>{{ t('orderBook.size') }}</span>
+  </div>
+
+  <div class="order-book__asks">
+    @for (level of asksReversed(); track level.price) {
+      <button
+        type="button"
+        class="row row--ask"
+        (click)="pickPrice(level.price)"
+      >
+        <span
+          class="row__depth row__depth--ask"
+          [style.width.%]="depthPct(level.size, 'ask')"
+        ></span>
+        <span class="row__price">{{ fmtPrice(level.price) }}</span>
+        <span class="row__size">{{ fmtSize(level.size) }}</span>
+      </button>
+    }
+  </div>
+
+  @if (book(); as snapshot) {
+    <div class="order-book__spread">
+      <span>{{ t('orderBook.spread') }}</span>
+      <span class="order-book__spread-value">{{ fmtPrice(snapshot.spread) }}</span>
+      <span class="order-book__mid">{{ t('orderBook.mid') }} {{ fmtPrice(snapshot.mid) }}</span>
+    </div>
+  }
+
+  <div class="order-book__bids">
+    @for (level of book()?.bids ?? []; track level.price) {
+      <button
+        type="button"
+        class="row row--bid"
+        (click)="pickPrice(level.price)"
+      >
+        <span
+          class="row__depth row__depth--bid"
+          [style.width.%]="depthPct(level.size, 'bid')"
+        ></span>
+        <span class="row__price">{{ fmtPrice(level.price) }}</span>
+        <span class="row__size">{{ fmtSize(level.size) }}</span>
+      </button>
+    }
+  </div>
+</section>

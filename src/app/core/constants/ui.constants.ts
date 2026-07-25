@@ -1,0 +1,9 @@
+export const TOAST_TTL_INFO_MS = 2500;
+export const TOAST_TTL_SUCCESS_MS = 2500;
+export const TOAST_TTL_WARNING_MS = 3500;
+export const TOAST_TTL_DANGER_MS = 6000;
+export const TOAST_MAX_VISIBLE = 4;
+export const TRADE_PANEL_WIDTH_PX = 280;
+export const RIGHT_COLUMN_WIDTH_PX = 300;
+export const POSITIONS_PANEL_HEIGHT_PX = 200;
+export const FLASH_MS = 180;

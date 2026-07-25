@@ -1,0 +1,12 @@
+export const DEFAULT_CANDLE_INTERVAL_SEC = 5 as const;
+export const ALT_CANDLE_INTERVAL_SEC = 15 as const;
+export const DEFAULT_CANDLES_VISIBLE = 60;
+export const MIN_VISIBLE_CANDLES = 20;
+export const MAX_VISIBLE_CANDLES = 180;
+export const ZOOM_STEP_CANDLES = 4;
+export const PRICE_PADDING_RATIO = 0.04;
+export const BODY_WIDTH_RATIO = 0.62;
+export const CHART_RIGHT_AXIS_PX = 56;
+export const CHART_BOTTOM_AXIS_PX = 20;
+export const CHART_TOP_HUD_PX = 28;
+export const VOLUME_AREA_RATIO = 0.22;

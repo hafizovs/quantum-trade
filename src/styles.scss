@@ -1,0 +1,150 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--qt-font-ui);
+  background: var(--qt-bg-deep);
+  color: var(--qt-text);
+  overflow: hidden;
+}
+
+:root,
+[data-theme='dark'] {
+  --qt-bg-deep: #070b10;
+  --qt-bg-panel: #0d1219;
+  --qt-bg-panel-elevated: #141b26;
+  --qt-bg-chart: #0a0e14;
+  --qt-border: #1e2a3a;
+  --qt-border-strong: #2d3f56;
+  --qt-text: #d7e0ea;
+  --qt-text-muted: #7a8a9e;
+  --qt-accent: #00e5a8;
+  --qt-accent-2: #3aa0ff;
+  --qt-up: #00c853;
+  --qt-down: #ff3b5c;
+  --qt-up-dim: rgba(0, 200, 83, 0.18);
+  --qt-down-dim: rgba(255, 59, 92, 0.18);
+  --qt-warn: #ffb020;
+  --qt-danger: #ff3b5c;
+  --qt-grid: rgba(45, 63, 86, 0.45);
+  --qt-crosshair: rgba(215, 224, 234, 0.35);
+  --qt-depth-bid: rgba(0, 200, 83, 0.22);
+  --qt-depth-ask: rgba(255, 59, 92, 0.22);
+  --qt-focus-ring: #00e5a8;
+  --qt-font-display: 'Orbitron', 'Segoe UI', sans-serif;
+  --qt-font-ui: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --qt-font-mono: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+}
+
+[data-theme='light'] {
+  --qt-bg-deep: #e8eef5;
+  --qt-bg-panel: #f5f8fc;
+  --qt-bg-panel-elevated: #ffffff;
+  --qt-border: #c5d0de;
+  --qt-border-strong: #9aabbf;
+  --qt-text: #121820;
+  --qt-text-muted: #5a6b7d;
+  --qt-accent: #008f6b;
+  --qt-accent-2: #1565c0;
+  --qt-up: #1b8a45;
+  --qt-down: #c62828;
+  --qt-up-dim: rgba(27, 138, 69, 0.12);
+  --qt-down-dim: rgba(198, 40, 40, 0.12);
+  --qt-warn: #c77c00;
+  --qt-danger: #c62828;
+  --qt-grid: rgba(154, 171, 191, 0.35);
+  --qt-crosshair: rgba(18, 24, 32, 0.3);
+  --qt-depth-bid: rgba(27, 138, 69, 0.16);
+  --qt-depth-ask: rgba(198, 40, 40, 0.16);
+  --qt-focus-ring: #008f6b;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--qt-focus-ring);
+  outline-offset: 2px;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+@keyframes qt-flash-up {
+  0% {
+    background-color: var(--qt-up-dim);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes qt-flash-down {
+  0% {
+    background-color: var(--qt-down-dim);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes qt-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes qt-live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.qt-flash-up {
+  animation: qt-flash-up 180ms ease-out;
+}
+
+.qt-flash-down {
+  animation: qt-flash-down 180ms ease-out;
+}
+
+.qt-pnl-up {
+  color: var(--qt-up);
+}
+
+.qt-pnl-down {
+  color: var(--qt-down);
+}

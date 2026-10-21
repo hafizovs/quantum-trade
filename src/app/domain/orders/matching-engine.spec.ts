@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { Order, OrderBookSnapshot } from '../../models/trading.types';
+import type { Order, OrderBookSnapshot } from '../../core/models/trading.types';
 import {
   cancelOpenOrder,
   isLimitMarketable,

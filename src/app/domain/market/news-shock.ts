@@ -7,7 +7,7 @@ import {
   type NewsTemplate,
 } from '../../core/constants/news.constants';
 import type { AssetId } from '../../core/models/asset-id.model';
-import type { AssetMarketState, NewsItem } from '../../models/trading.types';
+import type { AssetMarketState, NewsItem } from '../../core/models/trading.types';
 import { clamp } from '../math/clamp';
 import { createId } from '../math/id-factory';
 import type { RandomSource } from '../math/rng';

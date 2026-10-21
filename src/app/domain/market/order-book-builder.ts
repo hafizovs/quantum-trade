@@ -11,7 +11,7 @@ import type {
   OrderBookItem,
   OrderBookSnapshot,
   UserLimitOverlay,
-} from '../../models/trading.types';
+} from '../../core/models/trading.types';
 import { roundToTick } from './gbm';
 import type { RandomSource } from '../math/rng';
 import { uniform } from '../math/rng';

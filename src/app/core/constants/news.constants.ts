@@ -1,5 +1,5 @@
 import type { AssetId } from '../models/asset-id.model';
-import type { NewsSentiment } from '../../models/trading.types';
+import type { NewsSentiment } from '../models/trading.types';
 
 export const NEWS_MIN_MS = 30000;
 export const NEWS_MAX_MS = 45000;

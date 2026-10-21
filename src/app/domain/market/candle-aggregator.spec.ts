@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { CandleAggregator, bucketStart } from './candle-aggregator';
-import type { PriceTick } from '../../models/trading.types';
+import type { PriceTick } from '../../core/models/trading.types';
 
 describe('candle-aggregator', () => {
   it('computes aligned bucket start', () => {

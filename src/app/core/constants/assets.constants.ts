@@ -1,5 +1,5 @@
 import type { AssetId } from '../models/asset-id.model';
-import type { MarketAsset } from '../../models/trading.types';
+import type { MarketAsset } from '../models/trading.types';
 
 export const ASSET_SEEDS: readonly MarketAsset[] = [
   {

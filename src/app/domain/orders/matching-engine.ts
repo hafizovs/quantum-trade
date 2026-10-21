@@ -1,4 +1,4 @@
-import type { Order, OrderBookSnapshot, PositionSide } from '../../models/trading.types';
+import type { Order, OrderBookSnapshot, PositionSide } from '../../core/models/trading.types';
 
 export interface MarketFillQuote {
   fillPrice: number;

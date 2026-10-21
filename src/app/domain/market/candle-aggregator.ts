@@ -1,6 +1,6 @@
 import { MAX_CANDLES } from '../../core/constants/market.constants';
 import type { CandleIntervalSec } from '../../core/models/candle-interval.model';
-import type { AssetId, Candle, PriceTick } from '../../models/trading.types';
+import type { AssetId, Candle, PriceTick } from '../../core/models/trading.types';
 
 export function bucketStart(time: number, intervalSec: CandleIntervalSec): number {
   const ms = intervalSec * 1000;

@@ -1,3 +1,7 @@
+## Live demo
+
+https://hafizovs.github.io/quantum-trade/
+
 # QuantumTrade
 
 Симулятор биржи и японских свечей на Angular 22+ (zoneless, Signals, Canvas 2D).

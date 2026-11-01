@@ -91,3 +91,30 @@ kbd {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
 }
+
+@media (max-width: 768px) {
+  .help-backdrop {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .help-modal {
+    max-height: min(85vh, 720px);
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .help-backdrop {
+    padding: 8px;
+  }
+
+  .help-modal__header h2 {
+    font-size: 16px;
+  }
+
+  .hotkeys li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

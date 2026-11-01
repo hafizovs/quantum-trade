@@ -8,6 +8,7 @@
   align-items: center;
   gap: 12px 16px;
   padding: 10px 14px;
+  max-width: 100%;
   background: var(--qt-toolbar-bg, #0d1218);
   border-bottom: 1px solid var(--qt-border, rgba(255, 255, 255, 0.08));
 }
@@ -16,7 +17,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 180px;
+  min-width: 0;
+  flex: 1 1 140px;
 }
 
 .toolbar__logo {
@@ -106,5 +108,54 @@
   .toolbar__actions {
     margin-left: 0;
     width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    gap: 8px 10px;
+    padding: 8px 10px;
+  }
+
+  .toolbar__assets,
+  .toolbar__intervals {
+    flex: 1 1 100%;
+  }
+
+  .toolbar__actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .ghost-btn {
+    padding: 8px 6px;
+    font-size: 10px;
+    text-align: center;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 375px) {
+  .toolbar__logo {
+    font-size: 18px;
+  }
+
+  .toolbar__title {
+    font-size: 13px;
+  }
+
+  .toolbar__subtitle {
+    display: none;
+  }
+
+  .asset-tab,
+  .pill {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .toolbar__actions {
+    grid-template-columns: 1fr 1fr;
   }
 }

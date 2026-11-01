@@ -8,6 +8,7 @@
   align-items: center;
   gap: 12px 20px;
   padding: 8px 14px;
+  max-width: 100%;
   background: var(--qt-status-bg, #0b1016);
   border-top: 1px solid var(--qt-border, rgba(255, 255, 255, 0.08));
 }
@@ -65,5 +66,41 @@
 @media (max-width: 1200px) {
   .status-bar__live {
     margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .status-bar {
+    gap: 8px 12px;
+    padding: 8px 10px;
+  }
+
+  .status-bar__item {
+    flex: 1 1 calc(50% - 12px);
+    min-width: 0;
+  }
+
+  .status-bar__live {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 375px) {
+  .status-bar {
+    gap: 6px 10px;
+    padding: 6px 8px;
+  }
+
+  .status-bar__item {
+    flex: 1 1 100%;
+  }
+
+  .label {
+    font-size: 9px;
+  }
+
+  .value {
+    font-size: 11px;
   }
 }
